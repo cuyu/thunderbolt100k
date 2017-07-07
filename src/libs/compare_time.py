@@ -16,15 +16,15 @@ def compare_time(time_stamp, time_format):
 
     if delta_day == 0:
         if delta_hour == 0:
-            return '<{0}min'.format(delta_minute + 1)
+            return '<{0}m'.format(delta_minute + 1)
         else:
-            return '<{0}hour'.format(delta_hour + 1)
+            return '<{0}h'.format(delta_hour + 1)
     else:
-        return '>{0}day'.format(delta_day)
-
+        return '>{0}d'.format(delta_day)
 
 
 if __name__ == '__main__':
     # Example: python compare_time.py '2017-07-07 12:00' '%Y-%m-%d %H:%M'
     import sys
-    print compare_time(sys.argv[1], sys.argv[2])
+
+    print compare_time(sys.argv[1].replace('"', '').replace("'", ''), sys.argv[2])
