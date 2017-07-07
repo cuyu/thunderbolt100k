@@ -27,6 +27,10 @@ THUNDERBOLT100K_WEATHER_TOKEN=<ToBeReplaced>
 THUNDERBOLT100K_WEATHER_CITY=<ToBeReplaced>
 # Interval (minutes) to pull the weather info, by default is 5 min
 THUNDERBOLT100K_WEATHER_INTERVAL=5
+# The final displayed weather info, default is (condition temp last_update)
+# Other supported info names:
+#     wind 
+THUNDERBOLT100K_WEATHER_INFO=(condition temp last_update)
 ```
 
 ### TODO
