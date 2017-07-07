@@ -32,4 +32,4 @@ if __name__ == '__main__':
     schedule.every(int(constants.CONFIG.get('WEATHER_INTERVAL'))).minutes.do(weather_main)
     while True:
         schedule.run_pending()
-        time.sleep(1)
+        time.sleep(10)
