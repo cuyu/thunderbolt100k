@@ -1,6 +1,6 @@
 # thunderbolt100k
 
-A collection of interesting widgets for [powerlevel9k](https://github.com/bhilburn/powerlevel9k)
+A collection of interesting widgets to enhance [powerlevel9k](https://github.com/bhilburn/powerlevel9k) theme for ZSH
 
 Build your awesome terminal with [powerlevel9k](https://github.com/bhilburn/powerlevel9k) and this project!
 
@@ -33,3 +33,4 @@ THUNDERBOLT100K_WEATHER_INTERVAL=5
 
 1. A script to install all the prerequisites?
 2. Should we also contains the specific configuration of PL9K? Or, just the widgets?
+3. Check the main process is running each time the PL9K called the entry function
