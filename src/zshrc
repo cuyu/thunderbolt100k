@@ -1,0 +1,24 @@
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_weather custom_internet_signal battery virtualenv dir_writable dir rbenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status load ram root_indicator background_jobs history time)
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=8
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+
+POWERLEVEL9K_RAM_BACKGROUND="clear"
+POWERLEVEL9K_RAM_FOREGROUND="green"
+POWERLEVEL9K_RAM_ELEMENTS="ram_free"
+POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND="clear"
+POWERLEVEL9K_LOAD_WARNING_BACKGROUND="clear"
+POWERLEVEL9K_LOAD_NORMAL_BACKGROUND="clear"
+POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND="red"
+POWERLEVEL9K_LOAD_WARNING_FOREGROUND="yellow"
+POWERLEVEL9K_LOAD_NORMAL_FOREGROUND="green"
+
+POWERLEVEL9K_TIME_FORMAT="\uf43a %D{%H:%M:%S}"
