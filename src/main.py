@@ -3,6 +3,8 @@
 import schedule
 import constants
 import time
+import daemon.pidfile
+import daemon
 
 from zsh_weather import get_weather_info
 
@@ -13,8 +15,13 @@ def weather_main():
         f.write(result)
 
 
-if __name__ == '__main__':
+def main():
     schedule.every(int(constants.CONFIG.get('WEATHER_INTERVAL'))).minutes.do(weather_main)
     while True:
         schedule.run_pending()
         time.sleep(10)
+
+
+if __name__ == '__main__':
+    with daemon.DaemonContext(pidfile=daemon.pidfile.PIDLockFile(constants.PID_PATH)):
+        main()

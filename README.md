@@ -2,11 +2,9 @@
 
 ![screenshot](/screenshot.png)
 
-> A collection of interesting widgets to enhance [powerlevel9k](https://github.com/bhilburn/powerlevel9k) theme for ZSH
-
 Build your awesome terminal with [powerlevel9k](https://github.com/bhilburn/powerlevel9k) and this project!
 
-Inspired by [JulienLemonde' Configuration](https://github.com/bhilburn/powerlevel9k/wiki/Show-Off-Your-Config#julienlemonde-configuration) for powerlevel9k.
+This project is inspired by [JulienLemonde' Configuration](https://github.com/bhilburn/powerlevel9k/wiki/Show-Off-Your-Config#julienlemonde-configuration) for powerlevel9k. The reason I start on this project is that I found it always takes some time to get the weather information each time I press the 'return' button. I want fluent terminal use experience as well as these information displayed and here it is.
 
 ### Prerequisites
 
@@ -16,7 +14,7 @@ Inspired by [JulienLemonde' Configuration](https://github.com/bhilburn/powerleve
 
 ### Installation
 
-Use pip:
+Use pip (not ready yet~):
 
 ```
 pip install thunderbolt100k

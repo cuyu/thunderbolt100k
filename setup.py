@@ -15,7 +15,8 @@ setuptools.setup(
     author_email='cuyu@splunk.com',
     install_requires=[
         'schedule',
-        'requests'
+        'requests',
+        'python-daemon',
     ],
     url='https://github.com/cuyu/thunderbolt100k',
     entry_points={
