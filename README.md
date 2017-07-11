@@ -1,16 +1,16 @@
 # thunderbolt100k (In progress)
 
+![screenshot](/screenshot.png)
+
 > A collection of interesting widgets to enhance [powerlevel9k](https://github.com/bhilburn/powerlevel9k) theme for ZSH
 
 Build your awesome terminal with [powerlevel9k](https://github.com/bhilburn/powerlevel9k) and this project!
 
 Inspired by [JulienLemonde' Configuration](https://github.com/bhilburn/powerlevel9k/wiki/Show-Off-Your-Config#julienlemonde-configuration) for powerlevel9k.
 
-![screenshot](/screenshot.png)
-
 ### Prerequisites
 
-1. Install [Oh My ZSH]
+1. Install [Oh My ZSH](http://ohmyz.sh/)
 2. Install [powerlevel9k](https://github.com/bhilburn/powerlevel9k) theme
 3. Install [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
 
