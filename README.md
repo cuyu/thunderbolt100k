@@ -6,6 +6,8 @@ Build your awesome terminal with [powerlevel9k](https://github.com/bhilburn/powe
 
 Inspired by [JulienLemonde' Configuration](https://github.com/bhilburn/powerlevel9k/wiki/Show-Off-Your-Config#julienlemonde-configuration) for powerlevel9k.
 
+![screenshot](/screenshot.png)
+
 ### Prerequisites
 
 1. Install [Oh My ZSH]
