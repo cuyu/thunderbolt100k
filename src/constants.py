@@ -21,7 +21,8 @@ DEFAULT_CONFIG = {
     'WEATHER_HIGH_TEMP_COLOR': 'red',
     'WEATHER_MIDDLE_TEMP_COLOR': 'yellow',
     'WEATHER_LOW_TEMP_COLOR': 'blue',
-    'WEATHER_UPDATE_TIME': 'true',
+    'WEATHER_SHOW_UPDATE_TIME': '120',
+    'WEATHER_UPDATE_TIME_COLOR': 'red',
 }
 DATA_PATH_FORMAT = '/tmp/thunderbolt100k_{0}.data'
 PID_PATH = '/tmp/thunderbolt100k.pid'

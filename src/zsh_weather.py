@@ -32,7 +32,7 @@ def read_weather_info():
     temp = info['temp_c']
     condition = info['condition']['text']
     update_time = content['current']['last_updated']
-    delta_time = compare_time(update_time, '%Y-%m-%d %H:%M')
+    delta_minute, delta_hour, delta_day = compare_time(update_time, '%Y-%m-%d %H:%M')
 
     if 'thunder' in condition:
         symbol = "\uf0e7"
@@ -72,15 +72,23 @@ def read_weather_info():
         temp_color = pl9k_color(constants.CONFIG.get('WEATHER_DEFAULT_COLOR'))
         temp_symbol = '\uf2c9'
 
-    if 'm' in delta_time:
-        time_color = '%F{green}'
-    elif 'h' in delta_time:
-        time_color = '%F{yellow}'
-    else:
-        time_color = '%F{red}'
+    delay_minutes = delta_minute + 60 * delta_hour + 60 * 24 * delta_day
 
-    print "%{" + symbol_color + "%}" + symbol + "  %{" + temp_color + "%}" + str(
-        temp) + temp_symbol + "%{" + time_color + "%}" + "({0})".format(delta_time)
+    if delta_day == 0:
+        if delta_hour == 0:
+            time_string = '>{0} min'.format(delta_minute)
+        else:
+            time_string = '>{0} hour'.format(delta_hour)
+    else:
+        time_string = '>{0} day'.format(delta_day)
+
+    result = "%{" + symbol_color + "%}" + symbol + "  %{" + temp_color + "%}" + str(
+        temp) + temp_symbol
+
+    if delay_minutes >= int(constants.CONFIG.get('WEATHER_SHOW_UPDATE_TIME')):
+        result += "%{" + pl9k_color(constants.CONFIG.get('WEATHER_UPDATE_TIME_COLOR')) + "%}" + "({0})".format(time_string)
+
+    print result
 
 
 if __name__ == '__main__':
