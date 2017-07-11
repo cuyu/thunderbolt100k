@@ -3,6 +3,10 @@
 import os
 
 
+def pl9k_color(color):
+    return '%F{' + color + '}'
+
+
 # Assume the conf location is '~/.zshrc'
 def load_conf():
     home = os.path.expanduser("~")

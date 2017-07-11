@@ -2,6 +2,7 @@ import requests
 import constants
 import json
 from libs.compare_time import compare_time
+from libs.common import pl9k_color
 import datetime
 
 SESSION = requests.session()
@@ -35,40 +36,40 @@ def read_weather_info():
 
     if 'thunder' in condition:
         symbol = "\uf0e7"
-        symbol_color = '%F{yellow}'
+        symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_THUNDER_COLOR'))
     elif 'rain' in condition:
-        symbol_color = '%F{blue}'
+        symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_RAIN_COLOR'))
         symbol = "\ue239"
     elif 'Cloudy' in condition:
         symbol = "\uf0c2"
-        symbol_color = '%F{white}'
+        symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_CLOUD_COLOR'))
     elif 'Overcast' in condition:
         symbol = "\uf0c2"
-        symbol_color = '%F{grey}'
+        symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_OVERCAST_COLOR'))
     elif "Partly cloudy" in condition:
         symbol = "\e21d"
-        symbol_color = '%F{white}'
+        symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_CLOUD_COLOR'))
     elif condition == 'Sunny':
         symbol = "\uf185"
-        symbol_color = '%F{yellow}'
+        symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_SUN_COLOR'))
     elif 'snow' in condition:
         symbol = "\uf2dc"
-        symbol_color = '%F{white}'
+        symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_SNOW_COLOR'))
     else:
-        symbol_color = "%F{green}"
+        symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_DEFAULT_COLOR'))
         symbol = "\uf2c7"
 
     if temp >= 35:
-        temp_color = '%F{red}'
+        temp_color = pl9k_color(constants.CONFIG.get('WEATHER_HIGH_TEMP_COLOR'))
         temp_symbol = '\uf2c7'
     elif temp >= 28:
-        temp_color = '%F{yellow}'
+        temp_color = pl9k_color(constants.CONFIG.get('WEATHER_MIDDLE_TEMP_COLOR'))
         temp_symbol = '\uf2c8'
     elif temp < 10:
-        temp_color = '%F{blue}'
+        temp_color = pl9k_color(constants.CONFIG.get('WEATHER_LOW_TEMP_COLOR'))
         temp_symbol = '\uf2cb'
     else:
-        temp_color = '%F{green}'
+        temp_color = pl9k_color(constants.CONFIG.get('WEATHER_DEFAULT_COLOR'))
         temp_symbol = '\uf2c9'
 
     if 'm' in delta_time:
