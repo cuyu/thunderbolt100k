@@ -11,8 +11,9 @@ from zsh_weather import get_weather_info
 
 def weather_main():
     result = get_weather_info()
-    with file(constants.DATA_PATH_FORMAT.format('weather'), mode='w+') as f:
-        f.write(result)
+    if result:
+        with file(constants.DATA_PATH_FORMAT.format('weather'), mode='w+') as f:
+            f.write(result)
 
 
 def main():

@@ -62,3 +62,4 @@ In this command, it will firstly check if the recorded pid is still exist. If th
 1. A script to install all the prerequisites?
 2. Should we also contains the specific configuration of PL9K? Or, just the widgets?
 3. Check the main process is running each time the PL9K called the entry function
+4. Supply a docker container as the cmdline

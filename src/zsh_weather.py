@@ -15,7 +15,8 @@ def get_weather_info():
         'https://api.apixu.com/v1/forecast.json?key={token}&q={city}&days=2'.format(
             token=constants.CONFIG.get('WEATHER_TOKEN'),
             city=constants.CONFIG.get('WEATHER_CITY')))
-    return response.content
+
+    return response.content if response.status_code == 200 else None
 
 
 def read_weather_info():
