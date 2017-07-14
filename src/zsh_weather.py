@@ -35,10 +35,10 @@ def read_weather_info():
     update_time = content['current']['last_updated']
     delta_minute, delta_hour, delta_day = compare_time(update_time, '%Y-%m-%d %H:%M')
 
-    if 'thunder' in condition:
+    if 'thunder' in condition or 'Thunder' in condition:
         symbol = "\uf0e7"
         symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_THUNDER_COLOR'))
-    elif 'rain' in condition:
+    elif 'rain' in condition or 'drizzle' in condition:
         symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_RAIN_COLOR'))
         symbol = "\ue239"
     elif 'Cloudy' in condition:
@@ -58,7 +58,7 @@ def read_weather_info():
         symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_SNOW_COLOR'))
     else:
         symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_DEFAULT_COLOR'))
-        symbol = "\uf2c7"
+        symbol = "\uf422"
 
     if temp >= 35:
         temp_color = pl9k_color(constants.CONFIG.get('WEATHER_HIGH_TEMP_COLOR'))
