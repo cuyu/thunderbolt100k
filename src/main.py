@@ -18,6 +18,7 @@ def weather_main():
 
 def main():
     schedule.every(int(constants.CONFIG.get('WEATHER_INTERVAL'))).minutes.do(weather_main)
+    weather_main()  # Run the function instantly and then schedule
     while True:
         schedule.run_pending()
         time.sleep(10)
