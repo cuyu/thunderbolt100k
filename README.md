@@ -14,11 +14,32 @@ This project is inspired by [JulienLemonde' Configuration](https://github.com/bh
 
 ### Installation
 
+Before install this project, please make sure you have install the above prerequisites successfully.
+
+#### Option 1:
+
 Use pip (not ready yet~):
 
 ```
 pip install thunderbolt100k
 ```
+
+#### Option 2:
+
+1. Download the project:
+
+   ```bash
+   git clone https://github.com/cuyu/thunderbolt100k.git
+   ```
+
+2. Register an account of [https://www.apixu.com/](https://www.apixu.com/) and copy your api key.
+
+3. CD to the project dir and run the following commands (you will be asked for the api key and city location):
+
+   ```bash
+   pip install -r src/requirements.txt
+   ./install.sh
+   ```
 
 ### Configuration
 
