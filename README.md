@@ -6,6 +6,8 @@ Build your awesome terminal with [powerlevel9k](https://github.com/bhilburn/powe
 
 This project is inspired by [JulienLemonde' Configuration](https://github.com/bhilburn/powerlevel9k/wiki/Show-Off-Your-Config#julienlemonde-configuration) for powerlevel9k. The reason I start on this project is that I found it always takes some time to get the weather information each time I press the 'return' button. I want fluent terminal use experience as well as these information displayed and here it is.
 
+**This project is meant to display those information which is not so urgent and may costs some time to fetch from the source.** For example, weather, emails, new comments of given forum and etc.
+
 ### Prerequisites
 
 1. Install [Oh My ZSH](http://ohmyz.sh/)
@@ -84,3 +86,4 @@ In this command, it will firstly check if the recorded pid is still exist. If th
 2. Should we also contains the specific configuration of PL9K? Or, just the widgets?
 3. Check the main process is running each time the PL9K called the entry function
 4. Supply a docker container as the cmdline
+5. Fix the bug which happens when kill the daemon python process manually

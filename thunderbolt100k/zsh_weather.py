@@ -50,7 +50,7 @@ def read_weather_info():
     elif "Partly cloudy" in condition:
         symbol = "\ue21d"
         symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_CLOUD_COLOR'))
-    elif condition == 'Sunny':
+    elif condition == 'Sunny' or condition == 'Clear':
         symbol = "\uf185"
         symbol_color = pl9k_color(constants.CONFIG.get('WEATHER_SUN_COLOR'))
     elif 'snow' in condition:
