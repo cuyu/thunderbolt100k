@@ -24,9 +24,14 @@ def load_conf():
     return config
 
 
-def write_conf(key, value, replace_exist=False, first_write=False):
+def write_conf(key, value, replace_exist=False, first_write=False, without_prefix=False):
     home = os.path.expanduser("~")
     path = os.path.join(home, '.zshrc')
+
+    if without_prefix:
+        template = '{0}={1}\n'
+    else:
+        template = 'THUNDERBOLT100K_{0}={1}\n'
 
     if first_write:
         with file(path, mode='a') as f:
@@ -37,4 +42,4 @@ def write_conf(key, value, replace_exist=False, first_write=False):
             raise NotImplementedError
         else:
             with file(path, mode='a') as f:
-                f.write('THUNDERBOLT100K_{0}={1}\n'.format(key, value))
+                f.write(template.format(key, value))

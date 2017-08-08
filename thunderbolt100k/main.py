@@ -7,9 +7,10 @@ import daemon.pidfile
 import daemon
 import os
 import argparse
-from libs.common import write_conf, load_conf
+from thunderbolt100k.libs.common import write_conf, load_conf
 import sys
-from widgets import *  # Import all the widgets
+from thunderbolt100k import __VERSION__
+from thunderbolt100k.widgets import *  # Import all the widgets
 
 
 def widget_main(widget):
@@ -20,12 +21,12 @@ def widget_main(widget):
 
 
 def polling():
-    for m in sys.modules['widgets'].modules:
+    for m in sys.modules['thunderbolt100k.widgets'].modules:
         if m.endswith('__init__.py'):
             continue
 
         widget_name = os.path.basename(m).replace('.py', '')
-        widget = getattr(sys.modules['widgets'], widget_name)
+        widget = getattr(sys.modules['thunderbolt100k.widgets'], widget_name)
         if constants.CONFIG.get('{0}_INTERVAL'.format(widget.__name__.upper())):
             interval = int(constants.CONFIG.get('{0}_INTERVAL'.format(widget_name.upper())))
         else:
@@ -47,19 +48,20 @@ def init_zshrc():
 
     # Set default settings
     print('Initializing default settings...')
+    write_conf('VERSION', __VERSION__, first_write=True)
     for key in constants.DEFAULT_CONFIG:
         write_conf(key, constants.DEFAULT_CONFIG[key])
 
     elements_names = []
     # Set PL9K custom command
-    for m in sys.modules['widgets'].modules:
+    for m in sys.modules['thunderbolt100k.widgets'].modules:
         if m.endswith('__init__.py'):
             continue
         widget_name = os.path.basename(m).replace('.py', '')
         print('Initializing [{0}] widget...'.format(widget_name))
-        widget = getattr(sys.modules['widgets'], widget_name)
+        widget = getattr(sys.modules['thunderbolt100k.widgets'], widget_name)
         write_conf('POWERLEVEL9K_CUSTOM_{0}'.format(widget_name.upper()),
-                   '"thunderbolt100k display {0}"'.format(widget_name))
+                   '"thunderbolt100k display {0}"'.format(widget_name), without_prefix=True)
 
         elements_names.append('custom_{0}'.format(widget_name))
         # Ask for extra info for each widgets
@@ -72,14 +74,15 @@ def init_zshrc():
     path = os.path.join(home, '.zshrc')
     for line in fileinput.input(path, inplace=True):
         if line.startswith('POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS'):
-            print(line.replace(')', ' {0})'.format(' '.join(elements_names))))
+            print(line.replace(')', ' {0})'.format(' '.join(elements_names))).rstrip())
         else:
-            print(line)
+            print(line.rstrip())
     fileinput.close()
 
     print('Initialization done! Open a new shell session and enjoy the view!')
     print('You may also want to rearrange the widgets locations by editing `POWERLEVEL9K_LEFT_PROMPT_ELEMENTS` and \n' +
           '`POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS` in `~/.zshrc` file')
+    print('If you want to set configurations for THUNDERBOLT100K, please refer to https://github.com/cuyu/thunderbolt100k#configuration')
 
 
 def main():
@@ -97,7 +100,7 @@ def main():
         with daemon.DaemonContext(pidfile=daemon.pidfile.PIDLockFile(constants.PID_PATH)):
             polling()
     elif args.command == 'display':
-        widgets = sys.modules['widgets']
+        widgets = sys.modules['thunderbolt100k.widgets']
         assert hasattr(widgets, args.widget), 'There is no widget called {0}'.format(args.widget)
         assert hasattr(getattr(widgets, args.widget),
                        'display'), 'The widget {0} must contains a `display` method'.format(args.widget)
