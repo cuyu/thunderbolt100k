@@ -1,14 +1,21 @@
 import requests
-import constants
+from thunderbolt100k import constants
 import json
-from libs.compare_time import compare_time
-from libs.common import pl9k_color
+from thunderbolt100k.libs.compare_time import compare_time
+from thunderbolt100k.libs.common import pl9k_color
 import datetime
 
 SESSION = requests.session()
 
 
-def get_weather_info():
+def user_input():
+    result = dict()
+    result['WEATHER_TOKEN'] = raw_input("Please input your api key for https://api.apixu.com: ")
+    result['WEATHER_CITY'] = raw_input('Please input the city of your location (e.g. Shanghai): ')
+    return result
+
+
+def fetch():
     assert 'WEATHER_TOKEN' in constants.CONFIG, 'You must set `THUNDERBOLT_WEATHER_TOKEN` in `~/.zshrc` file'
     assert 'WEATHER_CITY' in constants.CONFIG, 'You must set `THUNDERBOLT_WEATHER_CITY` in `~/.zshrc` file'
     response = SESSION.get(
@@ -19,7 +26,7 @@ def get_weather_info():
     return response.content if response.status_code == 200 else None
 
 
-def read_weather_info():
+def display():
     path = constants.DATA_PATH_FORMAT.format('weather')
     with file(path, 'r') as f:
         content = json.load(f)
@@ -87,10 +94,7 @@ def read_weather_info():
         temp) + temp_symbol
 
     if delay_minutes >= int(constants.CONFIG.get('WEATHER_SHOW_UPDATE_TIME')):
-        result += "%{" + pl9k_color(constants.CONFIG.get('WEATHER_UPDATE_TIME_COLOR')) + "%}" + "({0})".format(time_string)
+        result += "%{" + pl9k_color(constants.CONFIG.get('WEATHER_UPDATE_TIME_COLOR')) + "%}" + "({0})".format(
+            time_string)
 
-    print result
-
-
-if __name__ == '__main__':
-    read_weather_info()
+    return result

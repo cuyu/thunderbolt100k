@@ -80,10 +80,21 @@ As you pip installed, a cmdline tool named `_thunderbolt100k` is registered to t
 
 In this command, it will firstly check if the recorded pid is still exist. If the process is not exist, it will then start a new process to poll the corresponding information. So there is a background process to poll necessary information in every given interval and in the foreground (here is the terminal process), it will take much less time to get the information as it is cached already.
 
+### Widgets
+
+A widget is a `.py` file under `./widgets` folder which contains at least two functions:
+
+- `fetch`: is used to acquire informations and return the info at the end of the function.
+- `display`: is used to show the information in the terminal which is acquired by the `fetch` function. You can print the content in the function or return it and the framework will print it out.
+
+Also, there are some optional functions you can define in the widgets:
+
+- `user_input`: is used to ask for extra user informations and saves them as configurations when `thunderbolt100k init` is executed. For example, an api token.
+
 ### TODO
 
 1. A script to install all the prerequisites?
 2. Should we also contains the specific configuration of PL9K? Or, just the widgets?
-3. Check the main process is running each time the PL9K called the entry function
+3. ~~Check the main process is running each time the PL9K called the entry function~~
 4. Supply a docker container as the cmdline
 5. Fix the bug which happens when kill the daemon python process manually
