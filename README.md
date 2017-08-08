@@ -1,4 +1,4 @@
-# thunderbolt100k (In progress)
+# thunderbolt100k
 
 ![screenshot](/screenshot.png)
 
@@ -16,36 +16,29 @@ This project is inspired by [JulienLemonde' Configuration](https://github.com/bh
 
 ### Installation
 
-Before install this project, please make sure you have install the above prerequisites successfully.
+** Before install this project, please make sure you have install the above prerequisites successfully.*
 
-#### Option 1:
+1. Pip install the project:
 
-Use pip (not ready yet~):
-
-```
-pip install thunderbolt100k
-```
-
-#### Option 2:
-
-1. Download the project:
-
-   ```bash
-   git clone https://github.com/cuyu/thunderbolt100k.git
+   ```
+   pip install thunderbolt100k
    ```
 
 2. Register an account of [https://www.apixu.com/](https://www.apixu.com/) and copy your api key.
 
-3. CD to the project dir and run the following commands (you will be asked for the api key and city location):
+3. Initialize the project (you will be asked for the api key and city location):
 
    ```bash
-   pip install -r src/requirements.txt
-   ./install.sh
+   thunderbolt100k init
    ```
+
+4. Open a new shell session and enjoy!
 
 ### Configuration
 
-All the configurations are in the `~/.zshrc`. For example, you can configure the token of https://api.apixu.com, weather location and etc. in `~/.zshrc` file. Here are all the configurations you can set:
+All the configurations are in the `~/.zshrc`.
+
+By default, all the configurations are set when executing `thunderbolt100k init`. You may only need to edit it when there are some settings change. For example, you can configure the token of https://api.apixu.com, weather location and etc. in `~/.zshrc` file. Here are all the configurations you can set:
 
 ```shell
 # The token (i.e. api key) for https://api.apixu.com
@@ -76,7 +69,7 @@ THUNDERBOLT100K_WEATHER_SHOW_UPDATE_TIME=120
 
 ### How it works
 
-As you pip installed, a cmdline tool named `_thunderbolt100k` is registered to the PL9K. Each time you press the 'return' button in the terminal, PL9K will call the `_thunderbolt100k` command.
+As you pip installed, a cmdline tool named `thunderbolt100k` is also installed. Each time you press the 'return' button in the terminal, PL9K will call the `thunderbolt100k` command.
 
 In this command, it will firstly check if the recorded pid is still exist. If the process is not exist, it will then start a new process to poll the corresponding information. So there is a background process to poll necessary information in every given interval and in the foreground (here is the terminal process), it will take much less time to get the information as it is cached already.
 
@@ -94,7 +87,7 @@ Also, there are some optional functions you can define in the widgets:
 ### TODO
 
 1. A script to install all the prerequisites?
-2. Should we also contains the specific configuration of PL9K? Or, just the widgets?
+2. ~~Should we also contains the specific configuration of PL9K? Or, just the widgets?~~
 3. ~~Check the main process is running each time the PL9K called the entry function~~
 4. Supply a docker container as the cmdline
 5. Fix the bug which happens when kill the daemon python process manually
