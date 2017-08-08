@@ -16,7 +16,7 @@ from thunderbolt100k.widgets import *  # Import all the widgets
 def widget_main(widget):
     result = widget.fetch()
     if result:
-        with file(constants.DATA_PATH_FORMAT.format(widget.__name__.replace('widgets.', '')), mode='w+') as f:
+        with file(constants.DATA_PATH_FORMAT.format(widget.__name__.replace('thunderbolt100k.widgets.', '')), mode='w+') as f:
             f.write(result)
 
 
@@ -52,7 +52,10 @@ def init_zshrc():
     for key in constants.DEFAULT_CONFIG:
         write_conf(key, constants.DEFAULT_CONFIG[key])
 
-    elements_names = []
+    # Bind polling command to a custom PL9K element
+    write_conf('POWERLEVEL9K_CUSTOM_POLLING', '"thunderbolt100k polling"', without_prefix=True)
+
+    elements_names = ['custom_polling']
     # Set PL9K custom command
     for m in sys.modules['thunderbolt100k.widgets'].modules:
         if m.endswith('__init__.py'):
