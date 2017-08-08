@@ -16,7 +16,7 @@ This project is inspired by [JulienLemonde' Configuration](https://github.com/bh
 
 ### Installation
 
-** Before install this project, please make sure you have install the above prerequisites successfully.*
+Before install this project, please make sure you have installed the above prerequisites successfully.
 
 1. Pip install the project:
 
@@ -33,6 +33,25 @@ This project is inspired by [JulienLemonde' Configuration](https://github.com/bh
    ```
 
 4. Open a new shell session and enjoy!
+
+### How it works
+
+As you pip installed, a cmdline tool named `thunderbolt100k` is also installed. Each time you press the 'return' button in the terminal, PL9K will call the `thunderbolt100k` command.
+
+In this command, it will firstly check if the recorded pid is still exist. If the process is not exist, it will then start a new process to poll the corresponding information. So there is a background process to poll necessary information in every given interval and in the foreground (here is the terminal process), it will take much less time to get the information as it is cached already.
+
+### Widgets
+
+**Writting new widget for the project is really simple.** You can write your own widget by creating a `.py` file under `./widgets` folder, just like how the [weather widget](/thunderbolt100k/widgets/weather.py) does.
+
+A widget is a `.py` file under `./widgets` folder which contains at least two functions:
+
+- `fetch`: is used to acquire informations and return the info at the end of the function.
+- `display`: is used to show the information in the terminal which is acquired by the `fetch` function. You can print the content in the function or return it and the framework will print it out.
+
+Also, there are some optional functions you can define in the widgets:
+
+- `user_input`: is used to ask for extra user informations and saves them as configurations when `thunderbolt100k init` is executed. For example, an api token.
 
 ### Configuration
 
@@ -66,23 +85,6 @@ THUNDERBOLT100K_WEATHER_UPDATE_TIME_COLOR="red"
 # Show the update time if it is longer then given time (in minutes)
 THUNDERBOLT100K_WEATHER_SHOW_UPDATE_TIME=120
 ```
-
-### How it works
-
-As you pip installed, a cmdline tool named `thunderbolt100k` is also installed. Each time you press the 'return' button in the terminal, PL9K will call the `thunderbolt100k` command.
-
-In this command, it will firstly check if the recorded pid is still exist. If the process is not exist, it will then start a new process to poll the corresponding information. So there is a background process to poll necessary information in every given interval and in the foreground (here is the terminal process), it will take much less time to get the information as it is cached already.
-
-### Widgets
-
-A widget is a `.py` file under `./widgets` folder which contains at least two functions:
-
-- `fetch`: is used to acquire informations and return the info at the end of the function.
-- `display`: is used to show the information in the terminal which is acquired by the `fetch` function. You can print the content in the function or return it and the framework will print it out.
-
-Also, there are some optional functions you can define in the widgets:
-
-- `user_input`: is used to ask for extra user informations and saves them as configurations when `thunderbolt100k init` is executed. For example, an api token.
 
 ### TODO
 
